@@ -1,0 +1,31 @@
+nav {
+  height: 10vh;
+  width: 100%;
+  border: 1px solid black;
+  padding: 0 5rem;
+  .nav-div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .title-div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+    }
+    .pages-div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5rem;
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -6,11 +6,13 @@ import SignUp from "./pages/signup/SignUp.jsx";
 import SignIn from "./pages/signin/SignIn.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import About from "./pages/about/About.jsx";
+import Navigation from "./navigation/Navigation.jsx";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
+        <Navigation />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
