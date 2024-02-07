@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./signup.scss";
-// import { toast } from "react-hot-toast";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -19,7 +19,6 @@ const SignUp = () => {
       setLoading(true);
       if (formData.password !== formData.conformPassword) {
         setPassword("Passwords do not match");
-        // console.log("Passwords do not match");
         return;
       } else if (formData.password === formData.conformPassword) {
         setPassword("Passwords matched");
@@ -39,7 +38,9 @@ const SignUp = () => {
         setError("User registration failed. Please check your details.");
         return;
       }
-      setError(null);
+      navigate("/sign-in");
+
+      // setError(null);
     } catch (error) {
       console.error("An unexpected error occurred:", error);
       setLoading(false);
