@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./signup.scss";
 
 const SignUp = () => {
+  const [formData, setFormData] = useState({});
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
   return (
     <div className="signup_div">
       <div className="form_div">
         <h1>SignUp</h1>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="input_div">
             <label htmlFor="">Name:</label>
             <input
@@ -16,6 +21,7 @@ const SignUp = () => {
               // placeholder="username"
               id="username"
               className="username_input input-style"
+              onChange={handleChange}
             />
           </div>
           <div className="input_div">
@@ -25,6 +31,7 @@ const SignUp = () => {
               // placeholder="Email"
               id="email"
               className="email_input input-style"
+              onChange={handleChange}
             />
           </div>
 
@@ -36,6 +43,7 @@ const SignUp = () => {
               // placeholder="Password"
               id="password"
               className="password_input input-style"
+              onChange={handleChange}
             />
           </div>
 
@@ -47,6 +55,7 @@ const SignUp = () => {
               // placeholder="ConformPassword"
               id="conformPassword"
               className="conformPassword_input input-style"
+              onChange={handleChange}
             />
           </div>
           <div className="input_div button_div">
