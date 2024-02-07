@@ -27,6 +27,8 @@ app.listen(PORT, () => {
 app.use("/api/user", userRouters);
 app.use("/api/auth", authRouters);
 
+//middleware for error handling
+
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
 
