@@ -50,7 +50,7 @@ const SignUp = () => {
   return (
     <div className="signup_div">
       <div className="form_div">
-        <h1>SignUp</h1>
+        <h1>Sign Up</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="input_div">

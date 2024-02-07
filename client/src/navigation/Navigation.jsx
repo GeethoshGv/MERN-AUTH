@@ -21,7 +21,7 @@ const Navigation = () => {
               };
             }}
           >
-            <h1>Sign-In</h1>
+            <h1 className="auth-h1">SignIn</h1>
           </NavLink>
           <NavLink
             to="/sign-up"
@@ -31,7 +31,7 @@ const Navigation = () => {
               };
             }}
           >
-            <h1>SignUp</h1>
+            <h1 className="auth-h1">SignUp</h1>
           </NavLink>
         </div>
       </div>

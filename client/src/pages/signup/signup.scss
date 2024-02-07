@@ -13,6 +13,9 @@
     height: 100%;
     width: 100%;
     flex-direction: column;
+    h1 {
+      text-transform: capitalize;
+    }
     form {
       padding: 2.5rem;
       border-radius: 5px;
