@@ -2,29 +2,49 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./signup.scss";
+// import { toast } from "react-hot-toast";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({});
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [password, setPassword] = useState("");
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      setLoading(true);
+      if (formData.password !== formData.conformPassword) {
+        setPassword("Passwords do not match");
+        // console.log("Passwords do not match");
+        return;
+      } else if (formData.password === formData.conformPassword) {
+        setPassword("Passwords matched");
+      }
 
-    if (formData.password !== formData.conformPassword) {
-      console.log("Passwords do not match");
-      return;
+      const response = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      console.log(data);
+      setLoading(false);
+
+      if (data.success === true) {
+        setError("User registration failed. Please check your details.");
+        return;
+      }
+      setError(null);
+    } catch (error) {
+      console.error("An unexpected error occurred:", error);
+      setLoading(false);
+      setError("An unexpected error occurred. Please try again.");
     }
-
-    const response = await fetch("/api/auth/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    const data = await response.json();
-    console.log(data);
   };
   return (
     <div className="signup_div">
@@ -76,8 +96,11 @@ const SignUp = () => {
               onChange={handleChange}
             />
           </div>
+          <div className="pass_check">
+            <p>{password}</p>
+          </div>
           <div className="input_div button_div">
-            <button>SIGN UP</button>
+            <button>{loading ? "Loading..." : "SIGN UP"}</button>
           </div>
           <div className="bottom-text">
             <p>Have an account:</p>
@@ -85,6 +108,7 @@ const SignUp = () => {
               <span>Sign in</span>
             </Link>
           </div>
+          <p>{error && <span className="error-message">{error}</span>}</p>
         </form>
       </div>
     </div>
