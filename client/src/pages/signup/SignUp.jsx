@@ -11,11 +11,18 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/api/auth/signup", {
+
+    if (formData.password !== formData.conformPassword) {
+      console.log("Passwords do not match");
+      return;
+    }
+
+    const response = await fetch("/api/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
+
     const data = await response.json();
     console.log(data);
   };
@@ -62,7 +69,7 @@ const SignUp = () => {
             <label htmlFor="">ConformPassword:</label>
 
             <input
-              type="conformPassword"
+              type="password"
               // placeholder="ConformPassword"
               id="conformPassword"
               className="conformPassword_input input-style"
