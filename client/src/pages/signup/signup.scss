@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 100%;
   width: 100%;
   flex-direction: column;
 
@@ -43,6 +43,8 @@
 }
 
 .button_div {
+  display: flex;
+  gap: 1rem;
   button {
     background-color: #5eff00;
     border: 1px solid rgb(0, 197, 0);

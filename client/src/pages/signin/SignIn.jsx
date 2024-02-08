@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Oauth from "../../oauth/Oauth.jsx";
+import "./signin.scss";
 import {
   signInStart,
   signInSuccess,
@@ -68,9 +70,14 @@ const SignIn = () => {
               onChange={handleChange}
             />
           </div>
+          <p className="signin_error">
+            {error ? error.message || "Something went wrong!" : ""}
+          </p>
 
-          <div className="input_div button_div">
+          <div className="input_div button_div_sign">
             <button>{loading ? "Loading..." : "SIGN IN"}</button>
+            <span>Or</span>
+            <Oauth />
           </div>
           <div className="bottom-text">
             <p>Dont Have an account:</p>
@@ -78,7 +85,6 @@ const SignIn = () => {
               <span>Sign Up</span>
             </Link>
           </div>
-          <p>{error ? error.message || "Something went wrong!" : ""}</p>
         </form>
       </div>
     </div>

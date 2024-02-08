@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Oauth from "../../oauth/Oauth";
 import "./signup.scss";
 
 const SignUp = () => {
@@ -98,6 +99,7 @@ const SignUp = () => {
           <div className="pass_check"></div>
           <div className="input_div button_div">
             <button>{loading ? "Loading..." : "SIGN UP"}</button>
+            <Oauth />
           </div>
           <div className="bottom-text">
             <p>Have an account:</p>

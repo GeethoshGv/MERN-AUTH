@@ -1,0 +1,25 @@
+.button_div_sign {
+  display: flex;
+  gap: 5px;
+  button {
+    background-color: #5eff00;
+    border: 1px solid rgb(0, 197, 0);
+    // border: none;
+    padding: 1.2rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+  }
+  span {
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-weight: lighter;
+    // border: 1px solid red;
+  }
+}
+
+.signin_error {
+  margin: 0;
+}
