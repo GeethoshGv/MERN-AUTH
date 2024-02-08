@@ -3,7 +3,7 @@ import "./oauth.scss";
 import { app } from "../firebase/Firebase";
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { useDispatch } from "react-redux";
-
+import { signInSuccess } from "../redux/userSlice/userSlice.jsx";
 const Oauth = () => {
   const dispatch = useDispatch();
   const handleClick = async () => {
@@ -14,14 +14,13 @@ const Oauth = () => {
 
       const result = await signInWithPopup(auth, provider); //result
 
-      const res = await fetch("api/user/google", {
+      const res = await fetch("/api/auth/google", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userName: result.user.displayName,
+          name: result.user.displayName,
           email: result.user.email,
           photo: result.user.photoURL,
-          verified: result.user.emailVerified,
         }),
       });
 

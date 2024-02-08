@@ -2,8 +2,11 @@ import React from "react";
 import "./nav.scss";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navigation = () => {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <nav>
       <div className="nav-div">
@@ -31,7 +34,11 @@ const Navigation = () => {
               };
             }}
           >
-            <h1 className="auth-h1">SignUp</h1>
+            {currentUser ? (
+              <img src={currentUser.profilePicture} alt="profile" />
+            ) : (
+              <h1 className="auth-h1">SignUp</h1>
+            )}
           </NavLink>
         </div>
       </div>
