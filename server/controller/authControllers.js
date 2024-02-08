@@ -44,7 +44,7 @@ export const SignIn = async (req, res, next) => {
         expires: cookieExpiration,
       })
       .status(200)
-      .json(validUser);
+      .json(rest);
   } catch (error) {
     next(error);
   }
