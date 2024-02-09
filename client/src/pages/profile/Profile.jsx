@@ -14,6 +14,7 @@ import {
   updateUserSuccess,
   updateUserFailure,
 } from "../../redux/userSlice/userSlice.js";
+import toast, { Toaster } from "react-hot-toast";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -47,11 +48,13 @@ const Profile = () => {
       },
       (error) => {
         setImageError(true);
+        toast.error("Error uploading image (size must be less than 2 MB)");
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
           setFormData({ ...formData, profilePicture: downloadURL })
         );
+        toast.success("Image uploaded successfully");
       }
     );
   };
@@ -73,12 +76,15 @@ const Profile = () => {
       const data = await res.json();
       if (data.success === false) {
         dispatch(updateUserFailure(data));
+        toast.error("Something went wrong");
         return;
       }
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
+      toast.success("Profile updated successfully");
     } catch (error) {
       dispatch(updateUserFailure(error));
+      toast.error("Something went wrong");
     }
   };
 
@@ -102,17 +108,7 @@ const Profile = () => {
               onClick={() => fileRef.current.click()}
             />
           </div>
-          <p className="text-sm self-center">
-            {imageError ? (
-              <span>Error uploading image (size must be less than 2 MB)</span>
-            ) : imagePercent > 0 && imagePercent < 100 ? (
-              <span>{`Uploading: ${imagePercent} %`}</span>
-            ) : imagePercent === 100 ? (
-              <span>Image uploaded successfully</span>
-            ) : (
-              ""
-            )}
-          </p>
+
           <input
             defaultValue={currentUser.username}
             type="text"
@@ -142,8 +138,8 @@ const Profile = () => {
           </div>
         </form>
       </div>
-      <p>{error && "something went wrong"}</p>
-      <p>{updateSuccess && "profile updated successfully"}</p>
+
+      <Toaster position="top" />
     </div>
   );
 };
