@@ -11,7 +11,7 @@ const Profile = () => {
       <div className="profile_form_div">
         <form action="">
           <div className="profile_img_div">
-            <img src={currentUser.profilePicture} alt="" />
+            <img src={currentUser.profilePicture} alt="picture" />
           </div>
           <input
             defaultValue={currentUser.username}
@@ -26,24 +26,13 @@ const Profile = () => {
             placeholder="Email"
           />
           <input type="password" id="password" placeholder="password" />
-
-          <input type="number" placeholder=" Age:" />
-
-          <input type="tel" placeholder="  Phone Number:" />
-
-          <input type="date" placeholder="    Date of Birth:" />
-
-          <select className="gender-select">
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-          </select>
-          <div className="button_div_profile">
+          <div className="button_div_profile ">
             <button>Update</button>
-            <button>Sign-Out</button>
           </div>
-          <span>Delete Account</span>
+          <div className="button_div_profile ">
+            <button>Delete</button>
+            <button>sign-out</button>
+          </div>
         </form>
       </div>
     </div>
