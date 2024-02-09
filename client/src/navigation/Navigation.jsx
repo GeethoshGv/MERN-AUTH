@@ -1,10 +1,9 @@
-import React from "react";
 import "./nav.scss";
-import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Navigation = () => {
+export default function Navigation() {
   const { currentUser } = useSelector((state) => state.user);
 
   return (
@@ -16,34 +15,18 @@ const Navigation = () => {
           </Link>
         </div>
         <div className="pages-div">
-          <NavLink
-            to="/sign-in"
-            style={({ isActive }) => {
-              return {
-                color: isActive ? "red" : "black",
-              };
-            }}
-          >
-            <h1 className="auth-h1">SignIn</h1>
-          </NavLink>
-          <NavLink
-            to="/sign-up"
-            style={({ isActive }) => {
-              return {
-                color: isActive ? "red" : "black",
-              };
-            }}
-          >
+          <Link to="/about">
+            <h1 className="auth-h1">About</h1>
+          </Link>
+          <Link to="/profile">
             {currentUser ? (
               <img src={currentUser.profilePicture} alt="profile" />
             ) : (
-              <h1 className="auth-h1">SignUp</h1>
+              <h1 className="auth-h1">Sign In</h1>
             )}
-          </NavLink>
+          </Link>
         </div>
       </div>
     </nav>
   );
-};
-
-export default Navigation;
+}

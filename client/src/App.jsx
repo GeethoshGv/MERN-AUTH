@@ -7,6 +7,7 @@ import SignIn from "./pages/signin/SignIn.jsx";
 import Profile from "./pages/profile/Profile.jsx";
 import About from "./pages/about/About.jsx";
 import Navigation from "./navigation/Navigation.jsx";
+import PrivatePage from "./private/PrivatePage.jsx";
 
 const App = () => {
   return (
@@ -18,8 +19,9 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/profile" element={<Profile />} />
-
+          <Route element={<PrivatePage />}>
+            <Route path="/profile" element={<Profile />} />
+          </Route>
           <Route />
           <Route />
         </Routes>
