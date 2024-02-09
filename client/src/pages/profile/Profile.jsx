@@ -8,13 +8,22 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 import { app } from "../../firebase/Firebase.js";
+import { useDispatch } from "react-redux";
+import {
+  updateUserStart,
+  updateUserSuccess,
+  updateUserFailure,
+} from "../../redux/userSlice/userSlice.js";
 
 const Profile = () => {
+  const dispatch = useDispatch();
+
   const fileRef = useRef(null);
   const [image, setImage] = useState(undefined);
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, loading, error } = useSelector((state) => state.user);
   const [imageError, setImageError] = useState(false);
   const [imagePercent, setImagePercent] = useState(0);
+  const [updateSuccess, setUpdateSuccess] = useState();
 
   const [formData, setFormData] = useState({});
   useEffect(() => {
@@ -46,13 +55,39 @@ const Profile = () => {
       }
     );
   };
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(updateUserStart());
+      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(updateUserFailure(data));
+        return;
+      }
+      dispatch(updateUserSuccess(data));
+      setUpdateSuccess(true);
+    } catch (error) {
+      dispatch(updateUserFailure(error));
+    }
+  };
 
   return (
     <div className="profile_div">
       <h1>profile</h1>
 
       <div className="profile_form_div">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <input
             type="file"
             ref={fileRef}
@@ -83,16 +118,23 @@ const Profile = () => {
             type="text"
             id="username"
             placeholder="Username"
+            onChange={handleChange}
           />
           <input
             defaultValue={currentUser.email}
             type="email"
             id="email"
             placeholder="Email"
+            onChange={handleChange}
           />
-          <input type="password" id="password" placeholder="password" />
+          <input
+            type="password"
+            id="password"
+            placeholder="password"
+            onChange={handleChange}
+          />
           <div className="button_div_profile ">
-            <button>Update</button>
+            <button>{loading ? "loading..." : "update"}</button>
           </div>
           <div className="button_div_profile ">
             <button>Delete</button>
@@ -100,6 +142,8 @@ const Profile = () => {
           </div>
         </form>
       </div>
+      <p>{error && "something went wrong"}</p>
+      <p>{updateSuccess && "profile updated successfully"}</p>
     </div>
   );
 };
