@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid red;
 
   height: 100%;
   width: 100%;
@@ -14,21 +13,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid red;
     height: 100%;
     width: 100%;
     form {
-      border: 1px solid red;
-      width: 15%;
-
+      border: 1px solid grey;
+      border-radius: 5px;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      gap: 2rem;
-      padding: 5rem 5rem;
-      img {
-        border-radius: 10px;
+      gap: 1rem;
+      padding: 2rem 5rem;
+      .profile_img_div {
+        width: 70px;
+        height: 70px;
+        border: 1px solid grey;
+        border-radius: 5px;
+
+        img {
+          height: 100%;
+          width: 100%;
+          border-radius: 10px;
+        }
       }
       input {
         width: 100%;
@@ -44,14 +50,25 @@
         gap: 1rem;
         button {
           width: 100%;
-
+          background-color: red;
           padding: 1rem;
           border-radius: 5px;
           border: none;
-          background-color: red;
           color: white;
         }
       }
     }
+  }
+}
+
+.gender-select {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+
+  option {
+    background-color: #fff;
+    font-family: "Poppins", sans-serif;
   }
 }
