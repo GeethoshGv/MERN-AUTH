@@ -1,4 +1,15 @@
 .oauth_button {
   padding: 3px;
-  background-color: red !important;
+  background-color: rgb(235, 235, 235) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  img {
+    width: 25px;
+  }
+  h1 {
+    margin: 0;
+    font-size: 1rem;
+  }
 }

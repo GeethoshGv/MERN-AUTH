@@ -19,13 +19,16 @@
     form {
       padding: 2.5rem;
       border-radius: 5px;
-      border: 1px solid black;
+      border: 1px solid rgb(0, 0, 0);
       display: flex;
       flex-direction: column;
       gap: 2rem;
       .input_div {
         display: flex;
         flex-direction: column;
+        @media only screen and (max-width: 600px) {
+          gap: 5px;
+        }
         label {
           font-size: 0.91rem;
         }
@@ -34,7 +37,7 @@
           width: 250px;
           padding: 1rem;
           border-radius: 5px;
-          border: none;
+          border: 1px solid rgb(206, 206, 206);
           background-color: rgb(233, 233, 233);
         }
       }
@@ -45,10 +48,10 @@
 .button_div {
   display: flex;
   gap: 1rem;
+
   button {
-    background-color: #5eff00;
-    border: 1px solid rgb(0, 197, 0);
-    // border: none;
+    background-color: #00ed64;
+    border: 1px solid black;
     padding: 1.2rem;
     border-radius: 10px;
     font-size: 1rem;
@@ -59,15 +62,19 @@
 
 .bottom-text {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   p {
     margin: 0;
+    text-align: center;
   }
   a {
     text-decoration: none;
 
     span {
-      color: blue;
+      color: rgb(255, 0, 0);
+      width: 100%;
     }
   }
 }

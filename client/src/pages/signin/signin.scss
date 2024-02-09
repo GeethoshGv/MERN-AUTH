@@ -1,10 +1,10 @@
 .button_div_sign {
   display: flex;
+
   gap: 5px;
   button {
-    background-color: #5eff00;
-    border: 1px solid rgb(0, 197, 0);
-    // border: none;
+    background-color: #00ed64;
+    border: 1px solid rgb(94, 94, 94);
     padding: 1.2rem;
     border-radius: 10px;
     font-size: 1rem;
@@ -16,10 +16,14 @@
     text-align: center;
     color: black;
     font-weight: lighter;
-    // border: 1px solid red;
   }
 }
 
 .signin_error {
   margin: 0;
+}
+.signin-h1 {
+  @media only screen and (max-width: 600px) {
+    font-size: 1.8rem;
+  }
 }

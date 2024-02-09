@@ -1,13 +1,21 @@
 nav {
   height: 10vh;
-  border: 1px solid black;
+  background-color: rgb(219, 219, 219);
   padding: 0 2rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 1rem;
+  }
   .nav-div {
     height: 100%;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media only screen and (max-width: 600px) {
+      gap: 3rem;
+    }
+
     .title-div {
       display: flex;
       align-items: center;
@@ -17,8 +25,15 @@ nav {
         color: black;
 
         h1 {
+          font-weight: light;
           margin: 0;
           font-size: 1.52rem;
+          @media only screen and (max-width: 600px) {
+            font-size: 1.4rem;
+            font-weight: bolder;
+            width: 100%;
+            margin: 0;
+          }
         }
       }
     }
@@ -28,11 +43,18 @@ nav {
       justify-content: space-between;
       padding-right: 5rem;
       gap: 5rem;
+      @media only screen and (max-width: 600px) {
+        padding-right: 0rem;
+        justify-content: space-around;
+        gap: 2rem;
+      }
       a {
         text-decoration: none;
         color: black;
         .auth-h1 {
           margin: 0;
+          font-weight: 500;
+
           font-size: 1.2rem;
         }
         img {

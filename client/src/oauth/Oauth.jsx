@@ -5,6 +5,7 @@ import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { signInSuccess } from "../redux/userSlice/userSlice.js";
 import { useNavigate } from "react-router-dom";
+import googlelogo from "../assets/googlelogo.svg";
 
 const Oauth = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,8 @@ const Oauth = () => {
 
   return (
     <button type="button" className="oauth_button" onClick={handleGoogleClick}>
-      Google
+      <img src={googlelogo} alt="" />
+      <h1>Google</h1>
     </button>
   );
 };
