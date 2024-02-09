@@ -16,6 +16,7 @@ import {
   deleteUserStart,
   deleteUserSuccess,
   deleteUserFailure,
+  signOut,
 } from "../../redux/userSlice/userSlice.js";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -103,6 +104,14 @@ const Profile = () => {
       dispatch(deleteUserFailure(error));
     }
   };
+  const handleSignOut = async () => {
+    try {
+      await fetch("/api/auth/signout");
+      dispatch(signOut());
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="profile_div">
@@ -165,7 +174,7 @@ const Profile = () => {
           </div>
           <div className="button_div_profile ">
             <button onClick={handleDeleteAccount}>Delete</button>
-            <button>sign-out</button>
+            <button onClick={handleSignOut}>sign-out</button>
           </div>
         </form>
       </div>
