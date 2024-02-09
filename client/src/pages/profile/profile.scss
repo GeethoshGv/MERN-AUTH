@@ -36,6 +36,13 @@
           width: 100%;
         }
       }
+      p {
+        margin: 0;
+        font-size: 13px;
+        span {
+          color: red;
+        }
+      }
       input {
         width: 100%;
         background-color: rgb(223, 223, 223);
