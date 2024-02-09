@@ -62,7 +62,7 @@ const Profile = () => {
           />
           <div className="profile_img_div">
             <img
-              src={currentUser.profilePicture}
+              src={formData.profilePicture || currentUser.profilePicture}
               alt="picture"
               onClick={() => fileRef.current.click()}
             />

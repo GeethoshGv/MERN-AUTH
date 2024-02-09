@@ -7,7 +7,7 @@ import {
   signInStart,
   signInSuccess,
   signInFailure,
-} from "../../redux/userSlice/userSlice.jsx";
+} from "../../redux/userSlice/userSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 
 const SignIn = () => {
