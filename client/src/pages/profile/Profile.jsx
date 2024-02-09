@@ -13,6 +13,9 @@ import {
   updateUserStart,
   updateUserSuccess,
   updateUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  deleteUserFailure,
 } from "../../redux/userSlice/userSlice.js";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -48,16 +51,15 @@ const Profile = () => {
       },
       (error) => {
         setImageError(true);
-        toast.error("Error uploading image (size must be less than 2 MB)");
       },
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) =>
           setFormData({ ...formData, profilePicture: downloadURL })
         );
-        toast.success("Image uploaded successfully");
       }
     );
   };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -76,15 +78,29 @@ const Profile = () => {
       const data = await res.json();
       if (data.success === false) {
         dispatch(updateUserFailure(data));
-        toast.error("Something went wrong");
         return;
       }
       dispatch(updateUserSuccess(data));
       setUpdateSuccess(true);
-      toast.success("Profile updated successfully");
     } catch (error) {
       dispatch(updateUserFailure(error));
-      toast.error("Something went wrong");
+    }
+  };
+
+  const handleDeleteAccount = async () => {
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
+    } catch (error) {
+      dispatch(deleteUserFailure(error));
     }
   };
 
@@ -108,6 +124,19 @@ const Profile = () => {
               onClick={() => fileRef.current.click()}
             />
           </div>
+          <p>
+            {imageError ? (
+              <span>
+                Error uploading image (file size must be less than 2 MB)
+              </span>
+            ) : imagePercent > 0 && imagePercent < 100 ? (
+              <span>{`Uploading: ${imagePercent} %`}</span>
+            ) : imagePercent === 100 ? (
+              <span>Image uploaded successfully</span>
+            ) : (
+              ""
+            )}
+          </p>
 
           <input
             defaultValue={currentUser.username}
@@ -129,11 +158,13 @@ const Profile = () => {
             placeholder="password"
             onChange={handleChange}
           />
+          <p>{error && "Something went wrong!"}</p>
+          <p>{updateSuccess && "User is updated successfully!"}</p>
           <div className="button_div_profile ">
             <button>{loading ? "loading..." : "update"}</button>
           </div>
           <div className="button_div_profile ">
-            <button>Delete</button>
+            <button onClick={handleDeleteAccount}>Delete</button>
             <button>sign-out</button>
           </div>
         </form>
