@@ -7,6 +7,9 @@
   height: 100%;
   h1 {
     margin: 10px;
+    @media only screen and (max-width: 400px) {
+      font-size: 1.5rem;
+    }
   }
 
   .profile_form_div {
@@ -36,6 +39,7 @@
         justify-content: flex-start;
         padding-left: 4rem;
         width: 100%;
+
         img {
           border-radius: 50%;
         }
@@ -70,7 +74,7 @@
 }
 
 p {
-  margin: 10px;
+  margin: 2px;
 }
 .in_div {
   display: flex;

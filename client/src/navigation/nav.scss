@@ -6,6 +6,7 @@ nav {
   @media only screen and (max-width: 600px) {
     padding: 0 1rem;
   }
+
   .nav-div {
     height: 100%;
     width: 100%;
@@ -28,6 +29,9 @@ nav {
           font-weight: light;
           margin: 0;
           font-size: 1.52rem;
+          @media only screen and (max-width: 400px) {
+            font-size: 1.45rem;
+          }
           @media only screen and (max-width: 600px) {
             font-size: 1.4rem;
             font-weight: bolder;
@@ -54,7 +58,9 @@ nav {
         .auth-h1 {
           margin: 0;
           font-weight: 500;
-
+          @media only screen and (max-width: 400px) {
+            font-size: 1.1rem;
+          }
           font-size: 1.2rem;
         }
         img {

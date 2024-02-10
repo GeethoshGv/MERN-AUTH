@@ -99,6 +99,8 @@ const SignUp = () => {
           <div className="pass_check"></div>
           <div className="input_div button_div">
             <button>{loading ? "Loading..." : "SIGN UP"}</button>
+            <span>Or</span>
+
             <Oauth />
           </div>
           <div className="bottom-text">
