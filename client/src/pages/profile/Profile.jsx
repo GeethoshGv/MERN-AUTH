@@ -118,7 +118,6 @@ const Profile = () => {
       <h1>Profile</h1>
 
       <div className="profile_form_div">
-        <div className="bg-div"></div>
         <form onSubmit={handleSubmit}>
           <input
             type="file"
