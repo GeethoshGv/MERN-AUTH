@@ -115,9 +115,10 @@ const Profile = () => {
 
   return (
     <div className="profile_div">
-      <h1>profile</h1>
+      <h1>Profile</h1>
 
       <div className="profile_form_div">
+        <div className="bg-div"></div>
         <form onSubmit={handleSubmit}>
           <input
             type="file"
@@ -147,34 +148,41 @@ const Profile = () => {
             )}
           </p>
 
-          <input
-            defaultValue={currentUser.username}
-            type="text"
-            id="username"
-            placeholder="Username"
-            onChange={handleChange}
-          />
-          <input
-            defaultValue={currentUser.email}
-            type="email"
-            id="email"
-            placeholder="Email"
-            onChange={handleChange}
-          />
-          <input
-            type="password"
-            id="password"
-            placeholder="password"
-            onChange={handleChange}
-          />
+          <div className="in_div">
+            <label htmlFor="">Username:</label>
+            <input
+              defaultValue={currentUser.username}
+              type="text"
+              id="username"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="in_div">
+            <label htmlFor="">Email:</label>
+
+            <input
+              defaultValue={currentUser.email}
+              type="email"
+              id="email"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="in_div">
+            <label htmlFor="">Password:</label>
+
+            <input type="password" id="password" onChange={handleChange} />
+          </div>
+
           <p>{error && "Something went wrong!"}</p>
           <p>{updateSuccess && "User is updated successfully!"}</p>
           <div className="button_div_profile ">
-            <button>{loading ? "loading..." : "update"}</button>
+            <button>{loading ? "loading..." : "Update"}</button>
           </div>
           <div className="button_div_profile ">
             <button onClick={handleDeleteAccount}>Delete</button>
-            <button onClick={handleSignOut}>sign-out</button>
+            <button onClick={handleSignOut}>Sign-out</button>
           </div>
         </form>
       </div>
