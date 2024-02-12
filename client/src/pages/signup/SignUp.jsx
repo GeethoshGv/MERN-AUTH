@@ -60,6 +60,7 @@ const SignUp = () => {
               id="username"
               className="username_input input-style"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="input_div">
@@ -70,6 +71,7 @@ const SignUp = () => {
               id="email"
               className="email_input input-style"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -82,6 +84,7 @@ const SignUp = () => {
               id="password"
               className="password_input input-style"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -94,6 +97,7 @@ const SignUp = () => {
               id="conformPassword"
               className="conformPassword_input input-style"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="pass_check"></div>
