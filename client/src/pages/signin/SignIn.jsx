@@ -56,6 +56,7 @@ const SignIn = () => {
               id="email"
               className="email_input input-style"
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -68,6 +69,7 @@ const SignIn = () => {
               id="password"
               className="password_input input-style"
               onChange={handleChange}
+              required
             />
           </div>
           <p className="signin_error">
