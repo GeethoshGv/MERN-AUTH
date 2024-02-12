@@ -28,7 +28,7 @@ const About = () => {
         </div>
 
         <div>
-          <h1>FireBase</h1>
+          <h1>Bcrypt</h1>
           <p>
             Using Bcrypt for robust password hashing, safeguarding user
             credentials against unauthorized access.
